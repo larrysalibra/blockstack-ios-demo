@@ -7,12 +7,20 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
-
+import SafariServices
+class ViewController: UIViewController, SFSafariViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        NSLog("viewDidLoad")
+    
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NSLog("viewDidAppear")
+        let url = URL(string: "http://localhost:8080")!
+        let svc = SFSafariViewController(url: url)
+        self.present(svc, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
